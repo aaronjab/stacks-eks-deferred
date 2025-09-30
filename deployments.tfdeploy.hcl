@@ -10,8 +10,27 @@ deployment "development" {
     cluster_name        = "stacks-demo"
     kubernetes_version  = "1.30"
     region              = "us-east-2"
-    role_arn            = "<YOUR_ROLE_ARN>"
+    role_arn            = "arn:aws:iam::469071159539:role/stacks-Jab-Default-Project"
     identity_token      = identity_token.aws.jwt
     default_tags        = { stacks-preview-example = "eks-deferred-stack" }
   }
 }
+
+deployment "production" {
+  inputs = {
+    cluster_name        = "stacks-demo"
+    kubernetes_version  = "1.30"
+    region              = "us-east-2"
+    role_arn            = "arn:aws:iam::469071159539:role/stacks-Jab-Default-Project"
+    identity_token      = identity_token.aws.jwt
+    default_tags        = { stacks-preview-example = "eks-deferred-stack" }
+  }
+}
+
+# orchestrate "auto_approve" "safe_plans_dev" {
+#   check {
+#     # Only auto-approve in dev environment if no resources are being removed
+#     condition = context.plan.changes.remove == 0 && context.plan.deployment == deployment.development
+#     reason = "Plan has ${context.plan.changes.remove} resources to be removed."
+#   }
+# }
