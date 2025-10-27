@@ -10,7 +10,7 @@ deployment "development" {
     cluster_name        = "stacks-demo"
     kubernetes_version  = "1.30"
     region              = "us-east-2"
-    role_arn            = "arn:aws:iam::992036214401:role/stacks-Jab-stacks-identity-token"
+    role_arn            = "arn:aws:iam::493290348520:role/stacks-Jab-Stacks"
     identity_token      = identity_token.aws.jwt
     default_tags        = { stacks-preview-example = "eks-deferred-stack" }
   }
